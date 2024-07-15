@@ -1,8 +1,11 @@
 import selenium
 import time
 
+
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+
 from selenium.webdriver import ActionChains
 
 from selenium.webdriver.common.keys import Keys
@@ -13,13 +16,24 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 
 
+
+prefs = {
+    'credentials_enable_service': False,
+    'profile.password_manager_enabled': False
+}
+motion_w_url = 'https://manager.motionecosystem.com/login'
+rsrv_url = 'https://theme3.motionecosystem.com/reservation'
+
+service = Service()
 op = Options()
 op.add_experimental_option("detach", True)
+op.add_experimental_option('excludeSwitches', ['enable-logging'])
 op.add_experimental_option("excludeSwitches", ["enable-automation"])
+op.add_experimental_option("useAutomationExtension", False)
+op.add_argument('--disable-blink-features=AutomationControlled')
+op.add_experimental_option('prefs', prefs)
 
-motion_w_url = 'https://manager.motionecosystem.com/login'
-driver = webdriver.Chrome(options=op)
-driver.get(url=motion_w_url)
+
 
 # driver.find_element()
 
