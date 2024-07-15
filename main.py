@@ -1,10 +1,21 @@
+import selenium
+import time
+
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.support.ui import WebDriverWait
+
+from selenium.webdriver import ActionChains
+
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
 from selenium.webdriver.support import expected_conditions as EC
-import time
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+
+
 
 prefs = {
     'credentials_enable_service': False,
@@ -24,23 +35,94 @@ op.add_experimental_option('prefs', prefs)
 
 
 
-driver = webdriver.Chrome(options=op, service=service)
-driver.get(url=rsrv_url)
+# driver.find_element()
 
-user_name_input = driver.find_element(By.XPATH, '//*[@id="reservationName"]')
-user_mobile_input = driver.find_element(By.XPATH, '//*[@id="reservationMobile2"]')
-user_name_input = driver.find_element(By.XPATH, '//*[@id="sendBtn1"]')
+class login():
+    print("클래스 진입")
+    
+    
+    def success_login():
+        print("로그인 시작")
+        window_login = driver.find_element(By.XPATH,'//*[@id="frmLogin"]/input')
+        window_login = driver.find_element(By.NAME,'mainMemID')
+        window_login.send_keys('triuptheme3')
+        time.sleep(0.5)
+        
+        window_login = driver.find_element(By.NAME,'mainMemPwd')
+        window_login.send_keys('qwer1234!@#')
+        
+        login_btn = driver.find_element(By.XPATH,'//*[@id="frmLogin"]/div[1]/button')
+        login_btn.click()
+        
+    def login_pw_fail():
+        window_login = driver.find_element(By.XPATH,'//*[@id="frmLogin"]/input')
+        window_login = driver.find_element(By.NAME,'mainMemID')
+        window_login.send_keys('triuptheme31')
+        time.sleep(0.5)
+        
+        window_login = driver.find_element(By.NAME,'mainMemPwd')
+        window_login.send_keys('qwer1234!@#123')
+        
+        login_btn = driver.find_element(By.XPATH,'//*[@id="frmLogin"]/div[1]/button')
+        login_btn.click()
+        
+        err_popup = driver.find_element(By.CLASS_NAME,'ui error message')
+        err_popup.click()
+        
+    def login_null_date():
+        # window_login = driver.find_element(By.XPATH,'//*[@id="frmLogin"]/input')
+        # window_login = driver.find_element(By.NAME,'mainMemID')
+        # time.sleep(0.5)
+        
+        # window_login = driver.find_element(By.NAME,'mainMemPwd')
+        # window_login.send_keys('qwer1234!@#123')
+        
+        login_btn = driver.find_element(By.XPATH,'//*[@id="frmLogin"]/div[1]/button')
+        login_btn.click()
+        time.sleep(1)
+        
+        err_popup = driver.find_element(By.CLASS_NAME,'ui error message')
+        err_popup.click()
+        
+    def login_null_id():
+        
+        # window_login = driver.find_element(By.XPATH,'//*[@id="frmLogin"]/input')
+        # window_login = driver.find_element(By.NAME,'mainMemID')
+        # window_login.send_keys('triuptheme31')
+        # time.sleep(0.5)
+        
+        window_login = driver.find_element(By.NAME,'mainMemPwd')
+        window_login.send_keys('qwer1234!@#123')
+        
+        login_btn = driver.find_element(By.XPATH,'//*[@id="frmLogin"]/div[1]/button')
+        login_btn.click()
+        time.sleep(1)
+        
+        err_popup = driver.find_element(By.CLASS_NAME,'ui error message')
+        err_popup.click()
+        
+    def login_null_pw():
+        
+        window_login = driver.find_element(By.XPATH,'//*[@id="frmLogin"]/input')
+        window_login = driver.find_element(By.NAME,'mainMemID')
+        window_login.send_keys('triuptheme31')
+        time.sleep(0.5)
+        
+        # window_login = driver.find_element(By.NAME,'mainMemPwd')
+        # window_login.send_keys('qwer1234!@#123')
+        
+        login_btn = driver.find_element(By.XPATH,'//*[@id="frmLogin"]/div[1]/button')
+        login_btn.click()
+        time.sleep(1)
+        
+        err_popup = driver.find_element(By.CLASS_NAME,'ui error message')
+        err_popup.click()
 
-
-
-# id_input = driver.find_element(By.XPATH, '//input[@name="mainMemID"]')
-# id_input.send_keys("triuptheme3")
-# pwd_input = driver.find_element(By.XPATH, '//input[@name="mainMemPwd"]')
-# driver.maximize_window()
-# pwd_input.send_keys("qwer1234!@#")
-
-# login_btn = driver.find_element(By.CSS_SELECTOR, '.ui.fluid.large.teal.submit.button')
-# login_btn.click()
-
-# button = WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, '//a[text()="홈페이지 열기"]')))
-# button.click()
+        
+        
+# login.success_login()
+login.login_pw_fail()
+# login.login_null_date()
+# login.login_null_id()
+# login.login_null_pw()
+    
