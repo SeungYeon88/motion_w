@@ -3,9 +3,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-
 from selenium.webdriver import ActionChains
-
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -89,12 +87,39 @@ class login():
             driver.close()
         
     def login_null_id():
+<<<<<<< HEAD
+        driver.get(url=motion_w_url)
+        driver.close()
+        # window_login = driver.find_element(By.NAME,'mainMemPwd')
+        # window_login.send_keys('qwer1234!@#123')
+        
+        # login_btn = driver.find_element(By.XPATH,'//*[@id="frmLogin"]/div[1]/button')
+        # login_btn.click()
+        # time.sleep(1)
+        
+        # alert_text = driver.switch_to.alert.text
+        # driver.switch_to.alert.dismiss()
+        
+        
+        
+    def login_null_pw():
+        driver.get(url=motion_w_url)
+        window_login = driver.find_element(By.XPATH,'//*[@id="frmLogin"]/input')
+        window_login = driver.find_element(By.NAME,'mainMemID')
+        window_login.send_keys('triuptheme31')
+        time.sleep(0.5)
+        
+        # window_login = driver.find_element(By.NAME,'mainMemPwd')
+        # window_login.send_keys('qwer1234!@#123')
+=======
         print("아이디 미입력")
         login_input = driver.find_element(By.NAME,'mainMemPwd')
         login_input.send_keys('qwer1234!@#123')
+>>>>>>> 5e9a7d569591e5f4f0da481cbfa42006ad9e7210
         
         login_btn = driver.find_element(By.XPATH,'//*[@id="frmLogin"]/div[1]/button')
         login_btn.click()
+        
         time.sleep(1)
         alert_text = driver.switch_to.alert.text
         driver.switch_to.alert.dismiss()
@@ -125,8 +150,6 @@ class login():
         else :
             driver.close()
 
-        
-
 prefs = {
     'credentials_enable_service': False,
     'profile.password_manager_enabled': False
@@ -149,6 +172,10 @@ driver.maximize_window()
 # login.login_null_pw()
 login.login_null_date()
 # login.login_null_id()
+<<<<<<< HEAD
+# login.login_null_pw()
+=======
 # login.login_null_pw()
 # login.success_login()
 
+>>>>>>> 5e9a7d569591e5f4f0da481cbfa42006ad9e7210
