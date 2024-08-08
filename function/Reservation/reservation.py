@@ -44,14 +44,22 @@ class reservation():
         rsv_btn.click()
         
         driver.refresh()
-        time.sleep(1)
+        time.sleep(0.5)
         
         select_filter = driver.find_element(By.XPATH,'/html/body/div[1]/div/div/main/div/div/div[1]/div[1]/button/i')
         select_filter.click()
-        time.sleep(2)
+        time.sleep(0.5)
         
-        select_period = driver.find_element(By.XPATH,'//*[@id="schForm"]/div/div[1]/div[1]/div[2]/div[2]/button[1]')
-        select_period.click()
+        # select_period = driver.find_element(By.XPATH,'//*[@id="schForm"]/div/div[1]/div[1]/div[2]/div[2]/button[1]')
+        
+        # select_period.click()
+        select_option = driver.find_element(By.XPATH,'//*[@id="schForm"]/div/div[1]/div[1]/div[2]/div[1]/div/select')
+        
+        driver.execute_script("arguments[0].click();", select_option)
+        
+        
+        rsrv_option = driver.find_element(By.XPATH,'//*[@id="schForm"]/div/div[1]/div[1]/div[2]/div[1]/div/select/option[2]')
+        driver.execute_script("arguments[0].click();", rsrv_option)
         # print(select_period)
         # select_period.click()
         # select_period = driver.find_element(By.CSS_SELECTOR,'#schForm > div > div.ui.form > div:nth-child(1) > div.form-b > div:nth-child(1) > div > select')
