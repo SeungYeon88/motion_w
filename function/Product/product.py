@@ -16,7 +16,8 @@ class MenuController:
         return
 
 class ProductCategory:
-    def __init__(self, start_url):
+    def __init__(self, start_url,driver):
+        
         service = Service()
         chrome_options = Options()
         chrome_options.add_argument('--disable-blink-features=AutomationControlled')
@@ -232,7 +233,7 @@ class ProductCategory:
 class ProductSave():
     def __init__(self):
         return
-    def test():
+    def test(self):
         ProductCategory.get_list_menu(2)
         return
 
